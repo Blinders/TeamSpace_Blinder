@@ -15,7 +15,7 @@ Team Space
  - [Babel ECMAScript 2015](https://blog.outsider.ne.kr/1176)
  - [Material Icon](https://design.google.com/icons/)
 
-**2. 기록 **
+**2. 기록**
  - 12시 50분
  > 어그적대다가 슬슬 해볼까 싶어서 싶어서 일지 작성 시작.</br>
    (물론 최근 읽고 있는 마션의 영향이 크다는 느낌은 지울 수 없음)</br>
