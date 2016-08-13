@@ -13,22 +13,24 @@ class App extends Component {
 
   }
 
-    getChildContext() {
-      return { muiTheme: getMuiTheme(baseTheme) };
-    }
+  getChildContext() {
+    return { muiTheme: getMuiTheme(baseTheme) };
+  }
 
-    componentWillMount(){
-      injectTapEventPlugin();
-    }
-    render(){
-        return (
-          <div>
-            <Header />
-            <Body />
-            <Footer />
-          </div>
-        );
-    }
+  componentWillMount(){
+    injectTapEventPlugin();
+
+  }
+
+  render(){
+      return (
+        <div>
+          <Header />
+          <Body />
+          <Footer />
+        </div>
+      );
+  }
 
 }
 App.childContextTypes = {

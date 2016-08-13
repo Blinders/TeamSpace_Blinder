@@ -13,6 +13,25 @@ class Login extends Component {
     }
   }
 
+  kakaoLoginPopup(){
+    Kakao.Auth.login({
+     success: function(obj) {
+      console.log("Token Get : " + JSON.stringify(obj));
+      Kakao.API.request({
+          url: '/v1/user/me',
+          success: function(res) {
+            console.log("NickName : " + JSON.stringify(res));
+          },
+          fail: function(error) {
+            console.log("Nick Err" + JSON.stringify(error));
+          }
+        });
+     },
+     fail: function(err) {
+       console.log(JSON.stringify(err));
+     }
+    });
+  }
 
   render() {
     const paperStyle = {
@@ -40,7 +59,7 @@ class Login extends Component {
           Welcome To Team Space
         </div>
         <form action='#' id='loginForm'>
-          <div style={{marginTop: '40px'}}>
+          <div>
             <div style={{padding: '10px'}}>
               <TextField
                 hintText="gray.lee@naver.com"
@@ -60,7 +79,8 @@ class Login extends Component {
               <br />
             </div>
             <div style={{padding: '10px'}}>
-              <RaisedButton type='submit' label='Login' backgroundColor='#2196F3' labelColor='#FFFFFF' style={{margin: 12, width:'300px' }} />
+              <RaisedButton id='loginBtn' type='submit' label='Login' backgroundColor='#2196F3' labelColor='#FFFFFF' style={{margin: 12, width:'300px' }} labelStyle={{fontWeight: 'bold'}} />
+              <RaisedButton id='kakaoLoginBtn' onClick={this.kakaoLoginPopup} label='KaKao Login' backgroundColor='#ffef3f' labelColor='#000000' style={{margin: 12, width:'300px' }} labelStyle={{fontWeight: 'bold'}} />
               <br />
             </div>
           </div>
