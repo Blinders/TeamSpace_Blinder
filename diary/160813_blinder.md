@@ -77,3 +77,12 @@ Team Space
   Login Form Style을 state로 지정해서 Register now 누르면 Login Form Paper 크기만</br>
   변해서 가입할 수 있으면 편할 거 같은데...</br>
   일단 Login Form 만들었으니 Commit & Push. 카카오 연동은 나중에...</br>
+
+- 오후 8시
+> kakao 인증 모듈 적용완료</br>
+  홈페이지에 가이드 나온 부분이 일반 Javascript로 해놓은 거라서</br>
+  ES6 문법 적용된 React에는 어떻게 해야하나,,하고 한참 해맸는데</br>
+  일단 기본적으로 index.html에 kakao SDK CDN으로 잡아주고</br>
+  해당 API를 사용할 loginForm.js 에 관련 메소드를 불러주고 버튼에 이벤트로 넣어버림</br>
+  사실 내가 원했던 건 우리 input에 ID랑 PW넣고 kakao로 보내서 인증받는 거였는데</br>
+  역시 그렇게까진 열어놓진 않았음..그래서 Popup으로 대체</br>

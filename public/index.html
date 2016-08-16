@@ -12,8 +12,17 @@
       <script src="bundle.js"></script>
       <script src="https://use.fontawesome.com/bbfb4865bb.js"></script>
       <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+      <script> Kakao.init('e57576d994641c7512f98c94fc66e9b5'); </script>
+      <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
       <script>
-        Kakao.init('e57576d994641c7512f98c94fc66e9b5');
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCuTqzgnWn6t4XsU8KeQUNNI91q8xP_bYY",
+        authDomain: "teamspace-c5f1b.firebaseapp.com",
+        databaseURL: "https://teamspace-c5f1b.firebaseio.com",
+        storageBucket: "teamspace-c5f1b.appspot.com",
+      };
+      firebase.initializeApp(config);
       </script>
    </body>
 
