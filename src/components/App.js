@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Header from './Header/Header';
-import Body from './Body/Body';
+import Content from './Content/Content';
 import Footer from './Footer/Footer';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -19,14 +19,13 @@ class App extends Component {
 
   componentWillMount(){
     injectTapEventPlugin();
-
   }
 
   render(){
       return (
         <div>
           <Header />
-          <Body />
+          <Content />
           <Footer />
         </div>
       );
