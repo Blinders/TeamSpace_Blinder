@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import Header from './Header/Header';
-import Body from './Body/Body';
-import Footer from './Footer/Footer';
+import Header from '../components/Header/Header';
+import Body from '../components/Body/Body';
+import Footer from '../components/Footer/Footer';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-class App extends Component {
+class AppContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -26,14 +26,13 @@ class App extends Component {
       return (
         <div>
           <Header />
-          <Body />
+            {this.props.children}
           <Footer />
         </div>
       );
   }
-
 }
-App.childContextTypes = {
+AppContainer.childContextTypes = {
     muiTheme: PropTypes.object.isRequired,
 };
-export default App;
+export default AppContainer;

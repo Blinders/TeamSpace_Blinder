@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider  } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
+import Wooju from './components/Wooju/Wooju'
+import Hojin from './components/Hojin/Hojin'
+import Jisu from './components/Jisu/Jisu'
+import Gray from './components/Gray/Gray'
+import Home from './components/Home/Home'
 import counterApp from './reducers';
+import { Router, Route, IndexRoute, browserHistory  } from 'react-router'
 
 const store = createStore(counterApp);
 const rootElement = document.getElementById('root');
@@ -14,7 +20,15 @@ const rootElement = document.getElementById('root');
 // connect될 때 store에 접근 할 수 있게 해준다.
 ReactDOM.render(
     <Provider store = {store}>
-        <App />
+        <Router history={browserHistory}>
+          <Route path='/' component={AppContainer}>
+            <IndexRoute component={Home} />
+            <Route path="wooju" component={Wooju} />
+            <Route path="hojin" component={Hojin} />
+            <Route path="jisu" component={Jisu} />
+            <Route path="gray" component={Gray} />
+          </Route>
+        </Router>
     </Provider>,
     rootElement
 );

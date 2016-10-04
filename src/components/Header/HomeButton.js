@@ -2,6 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
+import { Link } from 'react-router'
 
 const styles = {
   exampleImageInput: {
@@ -18,7 +19,7 @@ const styles = {
 
 const HomeButton = () => (
   <div>
-
+<Link to='/' >
     <FlatButton
      label='Team Space'
   //   href='http://localhost:9000/'
@@ -28,7 +29,7 @@ const HomeButton = () => (
      rippleColor='#2196F3'
      icon={<i className='fa fa-rocket fa-rotate-270 fa-2x' style={{color : 'white', fontSize: '25px', marginTop: '3px'}}></i>}
    />
-
+</Link>
   </div>
 );
 
