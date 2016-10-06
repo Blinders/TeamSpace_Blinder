@@ -51,6 +51,9 @@ class Header extends Component {
           <Link to='gray' style={{paddingTop : '7px'}}>
             <FlatButton  label='GRAY'  labelStyle={{fontSize: '16px'}} />
           </Link>
+          <Link to='body' style={{paddingTop : '7px'}}>
+            <FlatButton  label='Body'  labelStyle={{fontSize: '16px'}} />
+          </Link>
         </ToolbarGroup>
       </Toolbar>
       </div>

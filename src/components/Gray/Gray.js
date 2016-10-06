@@ -8,7 +8,7 @@ class Gray extends Component{
           backgroundColor: '#EEE',
           textAlign: 'center'
         }}>
-          GRAY
+          GRAY ++++
         </div>
       );
     }

@@ -9,6 +9,7 @@ import Hojin from './components/Hojin/Hojin'
 import Jisu from './components/Jisu/Jisu'
 import Gray from './components/Gray/Gray'
 import Home from './components/Home/Home'
+import Body from './components/Body/Body'
 import counterApp from './reducers';
 import { Router, Route, IndexRoute, browserHistory  } from 'react-router'
 
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Route path="hojin" component={Hojin} />
             <Route path="jisu" component={Jisu} />
             <Route path="gray" component={Gray} />
+            <Route path="body" component={Body} />
           </Route>
         </Router>
     </Provider>,
