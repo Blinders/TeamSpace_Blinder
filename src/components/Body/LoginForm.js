@@ -4,13 +4,45 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import { Form } from 'formsy-react'
+import { FormsySelect, FormsyText } from 'formsy-material-ui/lib'
+import { login } from '../../actions'
 
-class Login extends Component {
+const paperStyle = {
+    height: 450,
+    width: 350,
+    margin: 20,
+    marginTop: '10%',
+    textAlign: 'center',
+    display: 'inline-block',
+  }
 
+  const loginHeaderStyle = {
+    color: '#fff',
+    fontSize: '20px',
+    fontWeight: 'normal',
+    padding: '20px 0',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    background: '#2196F3',
+    }
+
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
+      password: ""
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.loginAction = this.loginAction.bind(this);
+  }
+
+  handleChange(e) {
+    let nextState = {};
+    //nextState[e.target.value] = e.target.value;
+    this.setState({password : e.target.value});
+    this.setState({id : e.target.value});
   }
 
   kakaoLoginPopup(){
@@ -33,49 +65,73 @@ class Login extends Component {
     });
   }
 
-  render() {
-    const paperStyle = {
-        height: 450,
-        width: 350,
-        margin: 20,
-        marginTop: '10%',
-        textAlign: 'center',
-        display: 'inline-block',
-      }
+  loginAction() {
+    console.log(this.state.password);
+    fetch('http://localhost:3000/teamspace/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id : this.state.id,
+        password: this.state.password
+      })
+    }).then(result =>  {
+      console.log(result);
+    })
+  }
 
-      const loginHeaderStyle = {
-        color: '#fff',
-        fontSize: '20px',
-        fontWeight: 'normal',
-        padding: '20px 0',
-        textAlign: 'center',
-        textTransform: 'uppercase',
-        background: '#2196F3',
-        }
+  handleLogin = (data) => {
+    console.log(data);
+    this.props.login(data);
+  }
+
+
+  render() {
+
     return (
     <div>
       <Paper style={paperStyle} zDepth={3}>
         <div style={loginHeaderStyle}>
           Welcome To Team Space
         </div>
-        <form action='#' id='loginForm'>
+        <Form
+          onValid={this.enableBtn}
+          onInvalid={this.disableBtn}
+          onValidSubmit={this.handleLogin}
+        >
           <div>
             <div style={{padding: '10px'}}>
-              <TextField
-                hintText="gray.lee@naver.com"
-                floatingLabelText="E-mail"
-                floatingLabelFocusStyle = {{color: '#2196F3'}}
-                underlineFocusStyle = {{borderColor: '#2196F3'}}
-                />
-              <br />
+
+              <FormsyText
+                fullWidth
+                 required
+                 name='userId'
+                 floatingLabelText='E-mail'
+                 hintText='example@example.com'
+                 floatingLabelFocusStyle = {{color: '#2196F3'}}
+                 underlineFocusStyle = {{borderColor: '#2196F3'}}
+                 validations="isEmail"
+                 validationError="Please check email format"
+
+               />
             </div>
+
             <div style={{padding: '10px'}}>
-              <TextField
-                hintText="insert password"
-                floatingLabelText="Password"
-                floatingLabelFocusStyle = {{color: '#2196F3'}}
-                underlineFocusStyle = {{borderColor: '#2196F3'}}
-                />
+             <FormsyText
+              fullWidth
+               required
+               name='userpw'
+               type='password'
+               hintText='input admin password'
+               floatingLabelText='Password'
+               floatingLabelFocusStyle = {{color: '#2196F3'}}
+               underlineFocusStyle = {{borderColor: '#2196F3'}}
+             />
+
+
+
               <br />
             </div>
             <div style={{padding: '10px'}}>
@@ -92,7 +148,7 @@ class Login extends Component {
           <FlatButton label="Forgot Password?" rippleColor='#2196F3'/>
           </div>
           </div>
-        </form>
+        </Form>
       </Paper>
     </div>
     );
@@ -100,12 +156,8 @@ class Login extends Component {
 }
 
 
-let mapDispatchToProps = (dispatch) => {
-    return {
 
-    }
+
+LoginForm.PropTypes = {
+  login: React.PropTypes.func.isRequired
 }
-
-Login = connect(undefined, undefined)(Login);
-
-export default Login;
